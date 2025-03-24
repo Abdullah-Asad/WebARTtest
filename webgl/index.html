@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Unity WebGL + AR Integration</title>
+  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/ar.js@3.3.2/aframe/build/aframe-ar.min.js"></script>
+  <script>
+    function OpenUSDZ(url) {
+      window.location.href = url;
+    }
+    function ShowWebAR() {
+      document.getElementById("ar-scene").style.display = "block";
+    }
+  </script>
+  <style>
+    body { margin: 0; padding: 0; overflow: hidden; }
+    #ar-scene { width: 100vw; height: 100vh; position: absolute; top: 0; left: 0; z-index: 999; }
+  </style>
+</head>
+<body>
+  <h3>Unity WebGL AR Demo</h3>
+
+  <button onclick="OpenUSDZ('ios/model.usdz')">Open in ARKit (iOS)</button>
+  <button onclick="ShowWebAR()">Show in AR.js (Web)</button>
+
+  <a-scene embedded arjs id="ar-scene" style="display: none;">
+    <a-marker-camera preset="hiro">
+      <a-entity gltf-model="android/model.glb" scale="1 1 1"></a-entity>
+    </a-marker-camera>
+  </a-scene>
+</body>
+</html>
